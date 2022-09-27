@@ -1,0 +1,45 @@
+
+Map is associate DS, That store object in <key, value> form
+ HashMap contain a node - node represent a class having these property - int hashCode,  K Key, V Value, NOde next
+Hashing is a process to covert object into integer by usinng hashcode method
+
+Hashmap also allow NULL key, hascode of NULL == 0
+
+hashcode() return memory reference of object in INTEGER form
+HashMap use to calculate the bucket - Therefore calculate the INDEX
+
+equals() check two object are equal OR not
+HashMap use equals to compare KEY --> equal return 0
+
+Bucket is element of Hashmap Array (Default Array size is 16)---> Bucket store nodes  --> 2 or more nodes can have same bucket
+Use LINKED list to connect the nodes
+
+Hashcode of array is large(555684) enough to create array  -- cause OutOfMemeoryException
+so we generate index to minimize size of array
+index = hashcode(key) & (n-1)      n is number of bucket
+
+Store Steps --->   map.put(new Key("Vishal"), 20);
+1. cal hashcode of Key  {"Vishal"}  --> 118
+2. calculate index --> 6
+3. create node object :
+   {
+         int hascode = 118;
+        Key key = {"vishal"}
+        Integer value = 20;
+        Node next = null
+   }
+4. place this object at index 6
+
+Get Step  --->  map.get(new Key("Vishal"))
+1. Cal hashcode of key {"Vishal"}
+2. cal index 3
+3. Go to index 3 of hashmap array -- and compare first elements KEY with given KEY
+   If both equal --> return value
+   Otherwise check for next element if exists --> if next node is null then return NULL --> Otherwise repeat same process.
+ 
+------------------------------
+In case of collision (index of two OR more nodex same)
+Nodes are link by linked List -- to find correct key in linked list is complex   O(n)
+
+This issue solve in JAVA 8
+Use BALANCED TREE instead of linked list --> improve performance to O(n) --> O(log n)
